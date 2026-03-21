@@ -1,0 +1,21 @@
+/* src/style.css */
+
+/**
+ * Tailwind v4 Entry Point.
+ * O motor Oxide processa este import e injeta as camadas base, components e utilities.
+ * Diferente da v3, não usamos mais as diretivas @tailwind base;
+ */
+@import "tailwindcss";
+
+/**
+ * Customização de Tema (Padrão Ouro v4).
+ * Na v4, as variáveis de tema são definidas diretamente no CSS usando a diretiva @theme.
+ * Isso melhora a DX, pois você tem IntelliSense nativo de CSS.
+ */
+@theme {
+  --color-brand-primary: #0052FF; /* Exemplo de cor da Onfly */
+  --color-brand-secondary: #002D80;
+  
+  /* Você pode estender fontes, espaçamentos e breakpoints aqui */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
