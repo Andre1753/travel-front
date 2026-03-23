@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { AuthService } from '../services/AuthService'; 
+  import { reactive, ref } from 'vue';
+  import { useRouter } from 'vue-router';
+  import { AuthService } from '../services/AuthService'; 
 
-const router = useRouter();
+  const router = useRouter();
 
-// Estado do formulário
-const form = reactive({
-    email: 'user@email.com',
-    password: 'password',
-});
+  // Estado do formulário
+  const form = reactive({
+    email: '',
+    password: '',
+  });
 
-// ESTADO DE ENGENHARIA: Controle de visibilidade da senha
-const showPassword = ref(false);
+  // ESTADO DE ENGENHARIA: Controle de visibilidade da senha
+  const showPassword = ref(false);
 
-const isLoading = ref(false);
-const errorMessage = ref('');
+  const isLoading = ref(false);
+  const errorMessage = ref('');
 
-/**
- * Alterna a visibilidade da senha.
- * UX Tip: Manter o foco no input após alternar ajuda usuários de teclado/leitores de tela.
- */
-function togglePassword() {
+  /**
+   * Alterna a visibilidade da senha.
+   * UX Tip: Manter o foco no input após alternar ajuda usuários de teclado/leitores de tela.
+   */
+  function togglePassword() {
     showPassword.value = !showPassword.value;
-}
+  }
 
-async function handleLogin() {
+  async function handleLogin() {
     isLoading.value = true;
     errorMessage.value = '';
     
     try {
-        const response = await AuthService.login(form);
-        localStorage.setItem('travel_token', response.access_token);
-        router.push({ name: 'dashboard' });
+      const response = await AuthService.login(form);
+      localStorage.setItem('travel_token', response.access_token);
+      router.push({ name: 'dashboard' });
     } catch (error: any) {
-        errorMessage.value = error.response?.data?.error || 'Falha na autenticação.';
+      errorMessage.value = error.response?.data?.error || 'Falha na autenticação.';
     } finally {
-        isLoading.value = false;
+      isLoading.value = false;
     }
-}
+  }
 </script>
 
 <template>
@@ -46,7 +46,7 @@ async function handleLogin() {
     <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
       
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-950">Travel Corporate</h1>
+        <h1 class="text-3xl font-bold text-gray-950">Travel Front</h1>
         <p class="text-gray-600">Acesse sua conta</p>
       </div>
 

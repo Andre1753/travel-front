@@ -42,7 +42,7 @@ const router = createRouter({
  * Navigation Guard (O Guardião de Elite)
  * Verifica o localStorage antes de cada transição de rota.
  */
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const isAuthenticated = !!localStorage.getItem('travel_token');
 
   if (to.meta.requiresAuth && !isAuthenticated) {

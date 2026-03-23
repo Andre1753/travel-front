@@ -29,6 +29,6 @@ export const AuditService = {
      */
     async getTravelOrderAudits(orderId: string): Promise<AuditLog[]> {
         const response = await api.get<{ data: AuditLog[] }>(`/travel-orders/${orderId}/audits`);
-        return response.data;
+        return response.data.data;
     }
 };
